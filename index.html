@@ -1,0 +1,400 @@
+<DOCTYPE! html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🍓 A Little Message For You 💗</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Quicksand',Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ffe4ee,#fff7fb,#ffeef5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    overflow:hidden;
+    position:relative;
+    padding:24px 0;
+}
+
+body::before{
+    content:"";
+    position:absolute;
+    width:480px;
+    height:480px;
+    background:radial-gradient(circle,rgba(255,111,166,.25),transparent 70%);
+    filter:blur(10px);
+    z-index:0;
+}
+
+.card{
+    width:90%;
+    max-width:460px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(8px);
+    padding:38px 35px 34px;
+    border-radius:28px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(255,105,180,.18);
+    animation:fadeIn 1.8s ease;
+    z-index:10;
+    position:relative;
+    border:1px solid rgba(255,182,206,.6);
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    inset:10px;
+    border:1.5px dashed rgba(255,141,182,.35);
+    border-radius:20px;
+    pointer-events:none;
+}
+
+.monthsary-tag{
+    display:inline-block;
+    background:linear-gradient(135deg,#ff8fb3,#ff4d88);
+    color:#fff;
+    font-size:12.5px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    padding:6px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
+    box-shadow:0 4px 12px rgba(255,77,136,.35);
+}
+
+.photo-frame{
+    position:relative;
+    width:100%;
+    max-width:280px;
+    margin:0 auto 22px;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(255,105,180,.28);
+    border:4px solid #fff;
+    outline:1px solid rgba(255,141,182,.4);
+}
+
+.photo-frame img{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:saturate(1.05) contrast(1.02);
+}
+
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(160deg,rgba(255,111,166,.32),rgba(255,77,136,.08) 55%,rgba(255,180,205,.28));
+    mix-blend-mode:soft-light;
+    pointer-events:none;
+}
+
+.photo-caption{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:#c05a83;
+    font-size:13.5px;
+    margin-bottom:26px;
+    letter-spacing:.3px;
+}
+
+.top{
+    font-size:38px;
+    margin-bottom:10px;
+    animation:float 3s ease-in-out infinite;
+    letter-spacing:6px;
+}
+
+h1{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    color:#ff4d88;
+    margin-bottom:6px;
+    font-size:34px;
+    letter-spacing:.3px;
+}
+
+.subtitle{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    font-weight:500;
+    color:#e8578f;
+    font-size:15px;
+    opacity:.85;
+    margin-bottom:22px;
+    letter-spacing:.5px;
+}
+
+.divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin:22px 0;
+    color:#ff9dbd;
+}
+
+.divider::before,
+.divider::after{
+    content:"";
+    height:1px;
+    width:56px;
+    background:linear-gradient(90deg,transparent,#ffb6ce,transparent);
+}
+
+.divider span{
+    font-size:14px;
+}
+
+p{
+    color:#5c5560;
+    font-size:16.5px;
+    line-height:1.9;
+    text-align:left;
+}
+
+p::first-letter{
+    font-family:'Cormorant Garamond',serif;
+    font-size:44px;
+    font-weight:600;
+    color:#ff4d88;
+    float:left;
+    line-height:1;
+    padding-right:8px;
+    padding-top:4px;
+}
+
+.music-block{
+    margin:28px 0 6px;
+    padding:18px 16px;
+    background:linear-gradient(135deg,#fff0f5,#fff8fb);
+    border:1px solid rgba(255,141,182,.35);
+    border-radius:18px;
+}
+
+.music-label{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:#ff4d88;
+    font-size:16px;
+    margin-bottom:12px;
+}
+
+.music-label .note{
+    animation:float 2.4s ease-in-out infinite;
+    font-style:normal;
+}
+
+audio{
+    width:100%;
+    accent-color:#ff4d88;
+}
+
+.song-credit{
+    margin-top:10px;
+    font-size:12.5px;
+    color:#a98fa0;
+    letter-spacing:.2px;
+}
+
+.seal-wrap{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+}
+
+.signed-as{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;
+    color:#8a7f89;
+    font-size:15px;
+}
+
+.seal{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%,#ff86ae,#ff4d88 70%,#e8437a);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 6px 16px rgba(255,77,136,.4),inset 0 2px 4px rgba(255,255,255,.4),inset 0 -3px 6px rgba(180,30,80,.35);
+    position:relative;
+    animation:pulse 2.6s ease-in-out infinite;
+}
+
+.seal span{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:600;
+    font-size:26px;
+    color:#fff;
+    text-shadow:0 1px 2px rgba(150,20,70,.4);
+}
+
+.seal-name{
+    font-weight:700;
+    color:#ff4d88;
+    font-size:20px;
+    letter-spacing:.5px;
+}
+
+.heart{
+    position:absolute;
+    color:#ff6fa6;
+    animation:rise linear forwards;
+    pointer-events:none;
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0px); }
+    50%{ transform:translateY(-12px); }
+}
+
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(25px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+@keyframes pulse{
+    0%,100%{ transform:scale(1); }
+    50%{ transform:scale(1.06); }
+}
+
+@keyframes rise{
+    from{ transform:translateY(100vh) scale(.8); opacity:0; }
+    20%{ opacity:1; }
+    to{ transform:translateY(-120vh) rotate(360deg) scale(1.3); opacity:0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .top,.seal,.card,.music-label .note{
+        animation:none;
+    }
+    .heart{
+        display:none;
+    }
+}
+
+@media (max-width:380px){
+    h1{
+        font-size:28px;
+    }
+    .card{
+        padding:32px 22px 28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<div class="monthsary-tag">23rd Monthsary 🍓</div>
+
+<div class="photo-frame">
+    <img src="photo.jpg" alt="The two of us together">
+</div>
+<div class="photo-caption">us, exactly as we are 🍓💗</div>
+
+<div class="top">🍓💗🎀</div>
+
+<h1>Hi, My Love. 🍓💗</h1>
+<div class="subtitle">a little something, just for you</div>
+
+<p>
+
+I made this little page just for you because I wanted to leave you something that you could always come back to whenever you needed a little reminder of how much you mean to me. 🍓💗
+
+<br><br>
+
+Thank you for being part of my life and for every memory we've shared together. Every day with you teaches me something new, and I'm grateful that we're growing side by side.
+
+<br><br>
+
+I know we aren't perfect, and that's okay. What matters most to me is that we continue choosing each other, understanding one another, and moving forward together.
+
+<br><br>
+
+Please always take care of yourself, smile whenever you can, and never forget how precious you are to me.
+
+<br><br>
+
+Thank you for simply being you.
+
+<br><br>
+
+Here's to 23 months, and to every one still coming. I love you for who you are, my love.
+
+</p>
+
+<div class="music-block">
+    <div class="music-label"><span class="note">🎵</span> a song for you</div>
+    <audio controls src="song.mp3"></audio>
+    <div class="song-credit">"I Wanna Be Yours" — Arctic Monkeys</div>
+</div>
+
+<div class="divider"><span>🍓</span></div>
+
+<div class="seal-wrap">
+    <div class="signed-as">Always &amp; Yours,</div>
+    <div class="seal"><span>S</span></div>
+    <div class="seal-name">Stan 🍓💗</div>
+</div>
+
+</div>
+
+<script>
+
+const emojis=["💗","🍓","🎀"];
+
+function createEmoji(){
+
+    const e=document.createElement("div");
+
+    e.className="heart";
+
+    e.innerHTML=emojis[Math.floor(Math.random()*emojis.length)];
+
+    e.style.left=Math.random()*100+"vw";
+
+    e.style.fontSize=(18+Math.random()*18)+"px";
+
+    e.style.animationDuration=(6+Math.random()*5)+"s";
+
+    document.body.appendChild(e);
+
+    setTimeout(()=>{
+        e.remove();
+    },11000);
+
+}
+
+setInterval(createEmoji,700);
+
+</script>
+
+</body>
+</html>
+e
